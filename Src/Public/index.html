@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#111827" />
+  <title>JobDeck</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="eyebrow">JOB APPLICATION DASHBOARD</div>
+      <h1 id="appTitle">JobDeck</h1>
+    </div>
+    <button id="refreshBtn" class="button secondary" type="button">Refresh</button>
+  </header>
+  <main>
+    <section id="errorBanner" class="banner error hidden" role="alert"></section>
+    <section id="saveBanner" class="banner success hidden" aria-live="polite"></section>
+    <section class="controls">
+      <input id="searchInput" class="input" type="search" placeholder="Search company, role, notes…" aria-label="Search jobs" />
+      <div class="filterRow">
+        <button class="pill active" data-filter="all" type="button">All</button>
+        <button class="pill" data-filter="active" type="button">Active</button>
+        <button class="pill" data-filter="applied" type="button">Applied</button>
+        <button class="pill" data-filter="watch" type="button">Watch</button>
+        <button class="pill" data-filter="archive" type="button">Archive</button>
+      </div>
+      <div class="filterRow">
+        <label class="compactLabel">Sort
+          <select id="sortSelect" class="select">
+            <option value="priority">Priority / rank</option>
+            <option value="company">Company</option>
+            <option value="status">Status</option>
+            <option value="recent">Posting age</option>
+          </select>
+        </label>
+      </div>
+    </section>
+    <section class="snapshot" id="snapshot"></section>
+    <section id="jobGrid" class="jobGrid" aria-live="polite"></section>
+    <section id="emptyState" class="empty hidden">No jobs match this view.</section>
+  </main>
+  <dialog id="jobDialog" class="jobDialog">
+    <form method="dialog" class="dialogHeader">
+      <div>
+        <div id="dialogCompany" class="eyebrow"></div>
+        <h2 id="dialogRole"></h2>
+      </div>
+      <button class="iconButton" value="close" aria-label="Close job details">×</button>
+    </form>
+    <div id="dialogBody" class="dialogBody"></div>
+  </dialog>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
