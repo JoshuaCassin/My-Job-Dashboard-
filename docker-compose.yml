@@ -1,0 +1,17 @@
+services:
+  jobdeck:
+    build:
+      context: .
+    image: jobdeck:local
+    restart: unless-stopped
+    environment:
+      PORT: 3000
+      APP_TITLE: ${APP_TITLE:-JobDeck}
+      GOOGLE_SHEET_ID: ${GOOGLE_SHEET_ID}
+      GOOGLE_SHEET_TAB: ${GOOGLE_SHEET_TAB:-Jobs}
+      GOOGLE_SERVICE_ACCOUNT_EMAIL: ${GOOGLE_SERVICE_ACCOUNT_EMAIL}
+      GOOGLE_PRIVATE_KEY: ${GOOGLE_PRIVATE_KEY}
+      READ_ONLY: ${READ_ONLY:-false}
+      EDITABLE_HEADERS: ${EDITABLE_HEADERS:-}
+    ports:
+      - "127.0.0.1:${HOST_PORT:-3080}:3000"
